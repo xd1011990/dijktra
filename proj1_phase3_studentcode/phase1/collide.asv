@@ -1,0 +1,22 @@
+function  map = collide(map, block, xy_res, z_res, num_block)
+% COLLIDE Test whether points collide with an obstacle in an environment.
+% map(x,y,z)= 1 if not collide with block, 0 if collide with a block.
+d = size(map);
+
+for n = 1:num_block
+    x_start = ceil(block(n,1)/xy_res);
+    x_end = ceil(block(n,4)/xy_res);
+    y_start = ceil(block(n,2)/xy_res);
+    y_end = ceil(block(n,5)/xy_res);
+    z_start = ceil(block(n,3)/z_res);
+    z_end = ceil(block(n,6)/z_res);
+    for x = x_start:x_end
+        for y = y_start:y_end
+            for z = z_start:z_end
+                map(x,y,z) = 1;
+            end
+        end
+    end
+end
+
+end

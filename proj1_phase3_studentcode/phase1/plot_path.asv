@@ -1,0 +1,28 @@
+function plot_path(map, path,start, goal)
+d=size(map);
+hold on;
+for x=1:d(1)
+    for y=1:d(2)
+        for z=1:d(3)
+            if (map(x,y,z)==1)
+                plot3(x,y,z,'*');
+                hold on;
+            end
+        end
+    end
+end
+n1 = goal(1);
+n2 = goal(2);
+n3 = goal(3);
+plot3(n1,n2,n3,'Marker','o','MarkerFaceColor','red');
+while(~isequal(path{n1,n2,n3},start))
+    plot3(path{n1,n2,n3}(1),path{n1,n2,n3}(2),path{n1,n2,n3}(3),'Marker','o','MarkerFaceColor','red');
+    hold on;
+    path{n1,n2,n3}
+	n1=path{n1,n2,n3}(1);
+    n2=path{n1,n2,n3}(2);
+    n3=path{n1,n2,n3}(3);
+    end
+plot3(path{n1,n2,n3}(1),path{n1,n2,n3}(2),path{n1,n2,n3}(3),'Marker','o', 'MarkerFaceColor','red');
+hold on;
+end
